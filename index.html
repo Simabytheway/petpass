@@ -8,50 +8,252 @@
 </head>
 <body>
     <header>
-        <div class="logo">Digital Pet Passport</div>
+        <div class="logo">My Pet Passport</div>
         <nav>
             <ul>
-                <li><a href="#">Pet-owner Login</a></li>
-                <li><a href="#">Vet Login</a></li>
-                <li><a href="#">Download the App</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Login</a>
+                    <div class="dropdown-content">
+                        <a href="#" id="owner-login">Pet-owner</a>
+                        <a href="#" id="vet-login">Vet</a>
+                        <a href="#" id="control-login">Control Body</a>
+                    </div>
+                </li>
+                <li><a href="#" id="download-app">Download the App</a></li>
             </ul>
         </nav>
     </header>
+  
     <main>
-        <section class="landing-page">
+        <section class="landing-page" id="landing-page">
             <h1>Welcome to the Digital Pet Passport</h1>
             <p>Your convenient way to manage your pet's travel documents and health records.</p>
+            <p>Log in with BankID/ MobileID / Passport/ID </p>
         </section>
-        <section class="passport-page" id="passport-page">
-            <h2>Pet Passport</h2>
-            <div class="passport-details">
-                <div class="pet-photo-placeholder">Pet Photo</div>
-                <div class="pet-info">
-                    <p><strong>Breed of Dog:</strong> <span id="breed">Poodle</span></p>
-                    <p><strong>Date of Birth:</strong> <span id="dob">03/01/2020</span></p>
-                    <p><strong>Microchip ID:</strong> <span id="microchip">900111</span></p>
-                    <p><strong>Weight:</strong> <span id="weight">23</span></p>
-                </div>
-            </div>
-            <nav class="sub-menu">
+        <!-- Left Menu -->
+        <nav class="left-menu" id="left-menu" style="display: none;">
+            <ul>
+                <li><a href="#">Passport Page</a></li>
+                <li><a href="#">Travel Rules</a></li>
+                <li><a href="#">History of Travels</a></li>
+              <li><a href="#">Download / Print Passport</a></li>
+            </ul>
+        </nav>
+        <!-- Pet Owner Page -->
+        <section class="owner-page" id="owner-page" style="display: none;">
+            <div class="box">
+                <h2>I. DETAILS OF OWNERSHIP</h2>
+                <button onclick="addNewOwner()">Add New Owner</button>
+                <button onclick="editOwnership()">Edit Ownership</button>
                 <ul>
-                    <li><a href="#" class="active">Passport Page</a></li>
-                    <li><a href="#">Travel Rules</a></li>
-                    <li><a href="#">History of Travels</a></li>
-                    <li><a href="#">Download Print Pass</a></li>
+                    <li>Name: Francesca</li>
+                    <li>Surname: Rossi</li>
+                    <li>Address: Stor Gatan</li>
+                    <li>Post-Code: 42257</li>
+                    <li>City: Jönköping</li>
+                    <li>Country: Sweden</li>
+                    <li>Telephone number: +46 123-4567-890</li>
+                    <li>Electronic Signature: <input type="text" id="owner-signature" name="owner-signature"></li>
                 </ul>
-            </nav>
+            </div>
+            <div class="box">
+                <h2>II. DESCRIPTION OF ANIMAL</h2>
+                <ul>
+                    <li>Name: Luna Misa</li>
+                    <li>Species: Canis Familiaris</li>
+                    <li>Breed: Standard Poodle</li>
+                    <li>Sex: Female</li>
+                    <li>Date of Birth: 03/01/2020</li>
+                    <li>Colour: Apricot</li>
+                    <li>Any notable or discernible features of characteristics: <input type="text" id="animal-features" name="animal-features"></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>III. MARKING OF ANIMAL</h2>
+                <ul>
+                    <li>Transponder alphanumeric code: 094445451232847550834SE</li>
+                    <li>Date of application or reading of the transponder: 13/04/2020</li>
+                    <li>Location of the transponder: Between shoulder blades</li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>IV. ISSUING OF THE PASSPORT</h2>
+                <ul>
+                    <li>Name of the authorised veterinarian: Anna Svensson</li>
+                    <li>Address: 34 Erikssons Gatan</li>
+                    <li>Post-Code: 29450</li>
+                    <li>City: Jönköping</li>
+                    <li>Country: Sweden</li>
+                    <li>Telephone number: +46 457-8567-124</li>
+                    <li>E-mail address: Anna.svensson@petpaw.se</li>
+                    <li>Date of issuing: 11/01/2020</li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>V. VACCINATION AGAINST RABIES</h2>
+                <ul>
+                    <li>Manufacturer & name of vaccine:</li>
+                    <li>Batch number: 49372746</li>
+                    <li>Vaccination date: 23/05/2022</li>
+                    <li>Valid form:</li>
+                    <li>Valid until:</li>
+                    <li>Authorised veterinarian: Anna Svensson</li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>VI. RABIES ANTIBODY TITRATION TEST</h2>
+                <ul>
+                    <li>Sample collected on: 05/05/2021</li>
+                    <li>Name of the authorised veterinarian: Anna Svensson</li> 
+                    <li>Address: 34 Erikssons Gatan</li>
+                    <li>Post-Code: 29450</li>
+                    <li>City: Jönköping</li>
+                    <li>Country: Sweden</li>
+                    <li>Telephone number: +46 457-8567-124</li>
+                    <li>Date of issuing: 11/01/2020</li>
+                    <li>Electronic Signature: <input type="text" id="owner-signature" name="owner-signature"></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>VII. ANTI ECHINOCOCCUS TREATMENT</h2>
+                <ul>
+                    <li>Manufacturer & name of vaccine:</li>
+                    <li>Vaccination date:</li> 
+                    <li>Vaccination time:</li>
+                    <li>Authorised veterinarian:</li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>VIII. OTHER ANTI-PARASITE TREATMENTS</h2>
+                <ul>
+                    <li>Manufacturer & name of vaccine:</li>
+                    <li>Vaccination date:</li> 
+                    <li>Vaccination time:</li>
+                    <li>Authorised veterinarian:</li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>IX. OTHER VACCINATIONS</h2>
+                <ul>
+                    <li>Manufacturer & name of vaccine:</li>
+                    <li>Batch number:</li>
+                    <li>Vaccination date:</li> 
+                    <li>Valid until:</li>
+                    <li>Authorised veterinarian:</li>
+                </ul>
+            </div>
+        </section>
+        <!-- Vet Page -->
+        <section class="vet-page" id="vet-page" style="display: none;">
+            <div class="box">
+                <h2>Vet Actions</h2>
+                <button onclick="showSearchPassport()">Search for Passport</button>
+                <button onclick="showNewPassportForm()">Make New Passport</button>
+            </div>
+        </section>
+        <!-- New Passport Page -->
+        <section class="new-passport" id="new-passport" style="display: none;">
+            <div class="box">
+                <h2>I. DETAILS OF OWNERSHIP</h2>
+                <ul>
+                    <li>Name: <input type="text"></li>
+                    <li>Surname: <input type="text"></li>
+                    <li>Address: <input type="text"></li>
+                    <li>Post-Code: <input type="text"></li>
+                    <li>City: <input type="text"></li>
+                    <li>Country: <input type="text"></li>
+                    <li>Telephone number: <input type="text"></li>
+                    <li>Electronic Signature: <input type="text"></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>II. DESCRIPTION OF ANIMAL</h2>
+                <ul>
+                    <li>Name: <input type="text"></li>
+                    <li>Species: <input type="text"></li>
+                    <li>Breed: <input type="text"></li>
+                    <li>Sex: <input type="text"></li>
+                    <li>Date of Birth: <input type="date"></li>
+                    <li>Colour: <input type="text"></li>
+                    <li>Any notable or discernible features of characteristics: <input type="text"></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>III. MARKING OF ANIMAL</h2>
+                <ul>
+                    <li>Transponder alphanumeric code: <input type="text"></li>
+                    <li>Date of application or reading of the transponder: <input type="date"></li>
+                    <li>Location of the transponder: <input type="text"></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>IV. ISSUING OF THE PASSPORT</h2>
+                <ul>
+                    <li>Name of the authorised veterinarian: <input type="text"></li>
+                    <li>Address: <input type="text"></li>
+                    <li>Post-Code: <input type="text"></li>
+                    <li>City: <input type="text"></li>
+                    <li>Country: <input type="text"></li>
+                    <li>Telephone number: <input type="text"></li>
+                    <li>E-mail address: <input type="text"></li>
+                    <li>Date of issuing: <input type="date"></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>V. VACCINATION AGAINST RABIES</h2>
+                <ul>
+                    <li>Manufacturer & name of vaccine: <input type="text"></li>
+                    <li>Batch number: <input type="text"></li>
+                    <li>Vaccination date: <input type="date"></li>
+                    <li>Valid form: <input type="text"></li>
+                    <li>Valid until: <input type="date"></li>
+                    <li>Authorised veterinarian: <input type="text"></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>VI. RABIES ANTIBODY TITRATION TEST</h2>
+                <ul>
+                    <li>Sample collected on: <input type="date"></li>
+                    <li>Name of the authorised veterinarian: <input type="text"></li>
+                    <li>Address: <input type="text"></li>
+                    <li>Post-Code: <input type="text"></li>
+                    <li>City: <input type="text"></li>
+                    <li>Country: <input type="text"></li>
+                    <li>Telephone number: <input type="text"></li>
+                    <li>Date: <input type="date"></li>
+                    <li>Electronic Signature: <input type="text"></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>VII. ANTI ECHINOCOCCUS TREATMENT</h2>
+                <ul>
+                    <li>Manufacturer & name of vaccine: <input type="text"></li>
+                    <li>Vaccination date: <input type="date"></li>
+                    <li>Vaccination time: <input type="time"></li>
+                    <li>Authorised veterinarian: <input type="text"></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>VIII. OTHER ANTI-PARASITE TREATMENTS</h2>
+                <ul>
+                    <li>Manufacturer & name of vaccine: <input type="text"></li>
+                    <li>Vaccination date: <input type="date"></li>
+                    <li>Vaccination time: <input type="time"></li>
+                    <li>Authorised veterinarian: <input type="text"></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h2>IX. OTHER VACCINATIONS</h2>
+                <ul>
+                    <li>Manufacturer & name of vaccine: <input type="text"></li>
+                    <li>Batch number: <input type="text"></li>
+                    <li>Vaccination date: <input type="date"></li>
+                    <li>Valid until: <input type="date"></li>
+                    <li>Authorised veterinarian: <input type="text"></li>
+                </ul>
+            </div>
         </section>
     </main>
-    <div class="hamburger-menu">
-        <button class="menu-btn">☰</button>
-        <div class="menu-content">
-            <a href="#">Pet Passport</a>
-            <a href="#">Pet Owner</a>
-            <a href="#">Pet Vaccination</a>
-            <a href="#">Vet Appointment</a>
-        </div>
-    </div>
     <script src="script.js"></script>
 </body>
 </html>
