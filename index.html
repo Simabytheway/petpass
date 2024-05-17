@@ -20,7 +20,7 @@
                     </div>
                 </li>
                 <li><a href="#" id="download-app">Download the App</a></li>
-              <li><a href="#" id="download-app">Language</a></li>
+                <li><a href="#" id="language">Language</a></li>
             </ul>
         </nav>
     </header>
@@ -29,7 +29,7 @@
         <section class="landing-page" id="landing-page">
             <h1>Welcome to the Digital Pet Passport</h1>
             <p>Your convenient way to manage your pet's travel documents and health records.</p>
-            <p>Log in with BankID/ MobileID / Passport/ID </p>
+            <p>Log in with BankID / MobileID / Passport/ID </p>
         </section>
         <!-- Left Menu -->
         <nav class="left-menu" id="left-menu" style="display: none;">
@@ -37,8 +37,8 @@
                 <li><a href="#">Passport Page</a></li>
                 <li><a href="#">Vet Appointments</a></li>
                 <li><a href="#">Travel Rules</a></li>
-                <li><a href="#">Travelling History</a></li>    
-              <li><a href="#" id="download-print-btn">Download Passport</a></li>
+                <li><a href="#">Travel History</a></li>
+                <li><a href="#" id="download-print-btn">Download Passport</a></li>
             </ul>
         </nav>
         <!-- Pet Owner Page -->
@@ -123,6 +123,7 @@
                     <li>Vaccination date:</li> 
                     <li>Vaccination time:</li>
                     <li>Authorised veterinarian:</li>
+                  <li>Electronic Signature: <input type="text" id="owner-signature" name="owner-signature"></li>
                 </ul>
             </div>
             <div class="box">
@@ -132,6 +133,7 @@
                     <li>Vaccination date:</li> 
                     <li>Vaccination time:</li>
                     <li>Authorised veterinarian:</li>
+                  <li>Electronic Signature: <input type="text" id="owner-signature" name="owner-signature"></li>
                 </ul>
             </div>
             <div class="box">
@@ -142,6 +144,33 @@
                     <li>Vaccination date:</li> 
                     <li>Valid until:</li>
                     <li>Authorised veterinarian:</li>
+                  <li>Electronic Signature: <input type="text" id="owner-signature" name="owner-signature"></li>
+                </ul>
+            </div>
+          
+           <div class="box">
+                <h2>X. CLINICAL EXAMINATION</h2>
+                <ul>
+                    <li>The animal shows no signs of diseases and is fit to be transported for the intended journey:</li>
+                    <li>Date:</li>
+                    <li>Authorised veterinarian:</li>
+                  <li>Electronic Signature: <input type="text" id="owner-signature" name="owner-signature"></li>
+                </ul>
+            </div>
+          
+           <div class="box">
+                <h2>XI. LEGALISATION</h2>
+                <ul>
+                    <li>LEGALISING BODY:</li>
+                    <li>Date:</li>
+                    <li>Electronic Signature: <input type="text" id="owner-signature" name="owner-signature"></li>
+                </ul>
+            </div>
+          <div class="box">
+                <h2>XII. OTHER</h2>
+                <ul>
+                  <li>Other: <input type="text"></li>
+                    <li>Electronic Signature: <input type="text" id="owner-signature" name="owner-signature"></li>
                 </ul>
             </div>
         </section>
@@ -149,14 +178,27 @@
         <section class="vet-page" id="vet-page" style="display: none;">
             <div class="box">
                 <h2>Vet Actions</h2>
+              <button onclick="showNewPassportForm()">Make New Passport</button>
                 <button onclick="showSearchPassport()">Search for Passport</button>
-                <button onclick="showNewPassportForm()">Make New Passport</button>
+              <button onclick="scanPassportQR()">Scan Passport QR Code</button> <!-- Added button for scanning QR code -->
+            </div>
+        </section>
+      
+       <!-- Control Body Page -->
+        <section class="control-body-page" id="control-body-page" style="display: none;">
+            <div class="box">
+                <h2>Control Body Actions</h2>
+                <button onclick="searchForPassport()">Search for Passport</button>
+                <button onclick="scanPassportQR()">Scan Passport QR Code</button>
+               <button onclick="controlHistory()">Control History</button>
             </div>
         </section>
         <!-- New Passport Page -->
         <section class="new-passport" id="new-passport" style="display: none;">
             <div class="box">
                 <h2>I. DETAILS OF OWNERSHIP</h2>
+              <button onclick="addNewOwner()">Add New Owner</button>
+                <button onclick="editOwnership()">Edit Ownership</button>
                 <ul>
                     <li>Name: <input type="text"></li>
                     <li>Surname: <input type="text"></li>
@@ -203,17 +245,23 @@
             </div>
             <div class="box">
                 <h2>V. VACCINATION AGAINST RABIES</h2>
+              <button onclick="addNewVaccinationRabies()">Add New Rabies Vaccination</button>
+                <ul>
                 <ul>
                     <li>Manufacturer & name of vaccine: <input type="text"></li>
                     <li>Batch number: <input type="text"></li>
                     <li>Vaccination date: <input type="date"></li>
                     <li>Valid form: <input type="text"></li>
                     <li>Valid until: <input type="date"></li>
-                    <li>Authorised veterinarian: <input type="text"></li>
+                    <li>Authorised veterinarian: <input type="text">
+                    <li>Electronic Signature: <input type="text">
+                    </li>
                 </ul>
             </div>
             <div class="box">
                 <h2>VI. RABIES ANTIBODY TITRATION TEST</h2>
+              <button onclick="addNewRabiesAntibodyTitrationTest()">Add New Rabies Antibody Titration Test</button>
+              <p>I, the undersigned, confirm that I have seen an official record stating that the rabies antibody titration test performed at an EU-approved laboratory on a sample of blood colelcted on the date mentioned below from the above described animal proved a response to anti-rabies vaccination at a level of serum neutralising antibody equal to or greater than 0.5 IU/ml.</p>
                 <ul>
                     <li>Sample collected on: <input type="date"></li>
                     <li>Name of the authorised veterinarian: <input type="text"></li>
@@ -227,31 +275,69 @@
                 </ul>
             </div>
             <div class="box">
-                <h2>VII. ANTI ECHINOCOCCUS TREATMENT</h2>
+                <h2>VII. ANTI-ECHINOCOCCUS TREATMENT</h2>
+              <button onclick="addNewAntiEchinococcusTreatment()">Add New Anti-Echinococcus Treatment</button>
                 <ul>
                     <li>Manufacturer & name of vaccine: <input type="text"></li>
                     <li>Vaccination date: <input type="date"></li>
                     <li>Vaccination time: <input type="time"></li>
-                    <li>Authorised veterinarian: <input type="text"></li>
+                    <li>Authorised veterinarian: <input type="text">
+                    <li>Electronic Signature: <input type="text">
+                    </li>
                 </ul>
             </div>
             <div class="box">
                 <h2>VIII. OTHER ANTI-PARASITE TREATMENTS</h2>
+              <button onclick="addNewAntiParasiteTreatment()">Add New Anti-Parasite Treatment</button>
                 <ul>
                     <li>Manufacturer & name of vaccine: <input type="text"></li>
                     <li>Vaccination date: <input type="date"></li>
                     <li>Vaccination time: <input type="time"></li>
-                    <li>Authorised veterinarian: <input type="text"></li>
+                    <li>Authorised veterinarian: <input type="text">
+                    <li>Electronic Signature: <input type="text">
+                    </li>
                 </ul>
             </div>
             <div class="box">
                 <h2>IX. OTHER VACCINATIONS</h2>
+              <button onclick="addNewVaccination()">Add New Vaccination</button>
                 <ul>
                     <li>Manufacturer & name of vaccine: <input type="text"></li>
                     <li>Batch number: <input type="text"></li>
                     <li>Vaccination date: <input type="date"></li>
                     <li>Valid until: <input type="date"></li>
-                    <li>Authorised veterinarian: <input type="text"></li>
+                    <li>Authorised veterinarian: <input type="text">
+                    <li>Electronic Signature: <input type="text">
+                    </li>
+                </ul>
+            </div>
+              
+              <div class="box">
+                <h2>X. CLINICAL EXAMINATION</h2>
+                <button onclick="addNewClinicalExamination()">Add New Clinical Examination</button>
+                <ul>
+                    <li>The animal shows no signs of diseases and is fit to be transported for the intended journey:</li>
+                    <li>Date:</li>
+                    <li>Authorised veterinarian:</li>
+                  <li>Electronic Signature: <input type="text" id="owner-signature" name="owner-signature"></li>
+                </ul>
+            </div>
+          
+           <div class="box">
+                <h2>XI. LEGALISATION</h2>
+             <button onclick="addNewLegalisation()">Add New Legalisation</button>
+                <ul>
+                    <li>LEGALISING BODY:</li>
+                    <li>Date:</li>
+                    <li>Electronic Signature: <input type="text" id="owner-signature" name="owner-signature"></li>
+                </ul>
+            </div>
+          <div class="box">
+                <h2>XII. OTHER</h2>
+            <button onclick="addNew()">Add New</button>
+                <ul>
+                  <li>Other: <input type="text"></li>
+                    <li>Electronic Signature: <input type="text" id="owner-signature" name="owner-signature"></li>
                 </ul>
             </div>
         </section>
